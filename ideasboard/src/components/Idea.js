@@ -1,10 +1,14 @@
 import React from 'react';
 
-const Idea = ({idea}) => 
-    <div className="stickynote" key={idea.id}>
-        <h4>{idea.title}</h4>
-        <p>{idea.body}</p>
-    </div>
+export default class Idea extends React.Component {
+    handleClick = () => {this.props.onClick(this.props.idea.id)}
 
-
-export default Idea
+    render(){
+        return(
+            <div className="tile">
+                <h3 onClick={this.handleClick}>{this.props.idea.title}</h3>
+                <p onClick={this.handleClick}>{this.props.idea.body}</p>
+            </div>
+        )
+    }
+}

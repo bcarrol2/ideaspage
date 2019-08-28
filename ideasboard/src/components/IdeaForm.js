@@ -10,6 +10,11 @@ export default class IdeaForm extends React.Component {
         }
     }
 
+    handleInput = (e) => {
+        this.props.resetNotification();
+        this.setState({[e.target.name]: e.target.value})
+    }
+
     handleChange = (e) => {this.setState({[e.target.name]: e.target.value})}
 
     handleblur = () => {
@@ -25,9 +30,12 @@ export default class IdeaForm extends React.Component {
     render(){
         return(
             <div className="tile">
-                <form onBlur={this.handleblur}>
-                    <input className="input" type="text" name="title" placeholder="Title" value={this.state.title} onChange={this.handleChange}/>
-                    <textarea className="input" name="body" placeholder="What's your idea?" value={this.state.body} onChange={this.handleChange}></textarea>
+                <form onBlur={this.handleBlur} >
+                            <input className='input' type="text" name="title" placeholder='Enter a Title'
+                    value={this.state.title} onChange={this.handleInput}
+                    ref={this.props.titleRef} />
+                            <textarea className='input' name="body" placeholder='Describe your idea'
+                    value={this.state.body} onChange={this.handleInput}></textarea>
                 </form>
             </div>
         )
