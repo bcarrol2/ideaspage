@@ -24,7 +24,7 @@ export default class IdeasContainer extends React.Component {
             <div>
                 {this.state.ideas.map((idea) => {
                         return (
-                            <div className="title" key={idea.id}>
+                            <div className="tile" key={idea.id}>
                                 <h4>{idea.title}</h4>
                                 <p>{idea.body}</p>
                             </div>
