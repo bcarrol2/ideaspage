@@ -10,7 +10,8 @@ export default class IdeasContainer extends React.Component {
 
         this.state = {
             ideas: [],
-            editingIdeaId: null
+            editingIdeaId: null,
+            notification: ''
         }
     }
 
@@ -35,7 +36,7 @@ export default class IdeasContainer extends React.Component {
     updateIdea = (idea) => {
         const ideaIndex = this.state.ideas.findIndex(x => x.id === idea.id)
         const ideas = update(this.state.ideas, {[ideaIndex]: { $set: idea }})
-        this.setState({ideas: ideas})
+        this.setState({ideas: ideas, notification: 'All changes saved'})
     }
 
     render(){
@@ -45,6 +46,9 @@ export default class IdeasContainer extends React.Component {
                     <button className="newideabutton" onClick={this.addNewIdea}>
                         New Idea
                     </button>
+                    <span className="notification">
+                        {this.state.notification}
+                    </span>
                 </div>
                 {this.state.ideas.map((idea) => {
                     if (this.state.editingIdeaId === idea.id) {
