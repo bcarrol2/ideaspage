@@ -1,7 +1,7 @@
 import React from 'react';
 
 export default class Idea extends React.Component {
-handleClick = () => { this.props.onClick(this.props.idea.id) }
+	handleClick = () => { this.props.onClick(this.props.idea.id) }
 
 	handleDelete = () => { this.props.onDelete(this.props.idea.id) }
 

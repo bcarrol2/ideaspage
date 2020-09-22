@@ -3,16 +3,17 @@ import axios from 'axios';
 
 export default class IdeaForm extends React.Component {
     constructor(props) {
-		super(props)
+    super(props)
+    
 		this.state = {
-            title: this.props.idea.title,
-            body: this.props.idea.body
+      title: this.props.idea.title,
+      body: this.props.idea.body
 		}
-	}
+	};
 
-  handleInput = (e) => {
+  handleInput = (event) => {
     this.props.resetNotification()
-    this.setState({[e.target.name]: e.target.value})
+    this.setState({[event.target.name]: event.target.value})
   }
 
   handleBlur = () => {
@@ -22,7 +23,6 @@ export default class IdeaForm extends React.Component {
       {idea: idea}
       )
     .then(response => {
-      console.log(response)
       this.props.updateIdea(response.data)
     })
     .catch(error => console.log(error))
@@ -42,4 +42,4 @@ export default class IdeaForm extends React.Component {
     );
   }
 
-}
+};
